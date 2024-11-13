@@ -1,0 +1,31 @@
+# Ignore virtual environment folders (includes Lib and Scripts if they are part of a virtual environment)
+venv/
+env/
+ENV/
+
+# Ignore Python bytecode files
+*.pyc
+*.pyo
+__pycache__/
+
+# Ignore IDE or editor-specific files
+.vscode/
+.idea/
+*.swp
+
+# Ignore system files
+.DS_Store   # For macOS
+Thumbs.db   # For Windows
+
+# Ignore log files
+*.log
+
+# Ignore distribution/build files (for packages)
+dist/
+build/
+*.egg-info/
+
+# Ignore other generated files and folders
+Lib/
+Scripts/
+pyvenv.cfg
