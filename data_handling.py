@@ -25,7 +25,7 @@ def clean_scraped_data(price):
 
 def get_price(df):
     for i in range(0, len(df)):
-        CPL = df.iat[i, 0]
-        UID = df.iat[i, 2]
-        value = clean_scraped_data(scraper(CPL, UID))
+        cpl = df.iat[i, 0]
+        uid = df.iat[i, 2]
+        value = clean_scraped_data(scraper(cpl, uid))
         df.iat[i, 3] = value
