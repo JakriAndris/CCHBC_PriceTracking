@@ -8,7 +8,6 @@ def scraper(cpl, uid):
     url_base = 'https://auchan.hu/.p-{}'
     url = url_base.format(uid)
 
-    #Options().add_argument('--search-engine-choice-country')
     driver = webdriver.Chrome()
 
     try:
