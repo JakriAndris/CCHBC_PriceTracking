@@ -27,5 +27,14 @@ def get_price(df):
     for i in range(0, len(df)):
         cpl = df.iat[i, 0]
         uid = df.iat[i, 2]
+
+        if pd.isna(uid):
+            continue
+        else:
+            try:
+                uid = int(uid)
+            except ValueError:
+                uid = str(uid)
+
         value = clean_scraped_data(scraper(cpl, uid))
         df.iat[i, 3] = value
