@@ -1,5 +1,6 @@
 import pandas as pd
 from webscraper import scraper
+import numpy as np
 
 
 def load_excel(file_path, sheet_name):
@@ -38,3 +39,14 @@ def get_price(df):
 
         value = clean_scraped_data(scraper(cpl, uid))
         df.iat[i, 3] = value
+
+
+def shift_weeks(df):
+    df[["PRICE (W-2)", "PROMO PRICE (W-2)"]] = np.nan
+
+    df["PRICE (W-2)"] = df["PRICE (W-1)"]
+    df["PROMO PRICE (W-2)"] = df["PROMO PRICE (W-1)"]
+    df["PRICE (W-1)"] = df["PRICE (W)"]
+    df["PROMO PRICE (W-1)"] = df["PROMO PRICE (W)"]
+
+    df[["PRICE (W)", "PROMO PRICE (W)"]] = np.nan
