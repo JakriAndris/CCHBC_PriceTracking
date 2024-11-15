@@ -1,7 +1,6 @@
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.common.exceptions import NoSuchElementException
-from selenium.webdriver.chrome.options import Options
 
 
 def scraper(cpl, uid):
@@ -17,7 +16,7 @@ def scraper(cpl, uid):
         price_element = driver.find_element(By.XPATH, "//span[@class='FBX6R-Sn']")
         price_element = price_element.text
     except NoSuchElementException:
-        print(f"Price not found for UID: {uid}")
+        print(f"ELement not found for: {uid}")
         price_element = None
     finally:
         driver.quit()

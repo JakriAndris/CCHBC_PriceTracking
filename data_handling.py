@@ -12,20 +12,14 @@ def save_excel(df, file_path, sheet_name):
 
 
 def clean_scraped_data(price):
-    if price is None:
-        return 0
-
     cleaned_price = ''.join(c for c in price if c.isdigit())
-
-    if cleaned_price:
-        return int(cleaned_price)
-    else:
-        return 0
+    return int(cleaned_price)
 
 
 def get_price(df):
     for i in range(0, len(df)):
         cpl = df.iat[i, 0]
+        name = df.iat[i, 1]
         uid = df.iat[i, 2]
 
         if pd.isna(uid):
@@ -36,5 +30,13 @@ def get_price(df):
             except ValueError:
                 uid = str(uid)
 
-        value = clean_scraped_data(scraper(cpl, uid))
+        print(f"CPL: {cpl} | Product name: {name}", end=" | ")
+
+        try:
+            value = clean_scraped_data(scraper(cpl, uid))
+        except ValueError:
+            value = 0
+
+        print(f"Price: {value}")
+
         df.iat[i, 3] = value
