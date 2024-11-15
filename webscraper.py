@@ -11,7 +11,7 @@ def scraper(cpl, uid):
 
     try:
         driver.get(url)
-        driver.implicitly_wait(3)
+        driver.implicitly_wait(5)
         price_element = driver.find_element(By.XPATH, "//span[@class='FBX6R-Sn']")
         price_element = price_element.text
     except NoSuchElementException:

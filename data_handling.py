@@ -52,3 +52,16 @@ def shift_weeks(df):
     df["PROMO PRICE (W-1)"] = df["PROMO PRICE (W)"]
 
     df[["PRICE (W)", "PROMO PRICE (W)"]] = np.nan
+
+
+def compare_to_last_week(df):
+    for i, row in df.iterrows():
+        current_price = row['PRICE (W)']
+        last_week_price = row['PRICE (W-1)']
+
+        if current_price == 0:
+            continue
+
+        if current_price < last_week_price:
+            df.at[i, 'PROMO PRICE (W)'] = current_price
+            df.at[i, 'PRICE (W)'] = last_week_price
