@@ -5,6 +5,16 @@ from selenium import webdriver
 
 
 def scraper(cpl, uid):
+    """
+    Scrape price data from an online store.
+
+    Args:
+        cpl (str): Store name (e.g., 'Auchan', 'Tesco', 'Spar').
+        uid (str or int): Unique identifier for the product.
+
+    Returns:
+        str or None: Scraped price as a string, or None if not found.
+    """
     driver = webdriver.Chrome()
     cpl_mapping = {
         "Auchan": {
@@ -31,6 +41,7 @@ def scraper(cpl, uid):
     url = url_base.format(uid)
 
     try:
+        # Load the product page and retrieve price data
         sleep(2)
         driver.get(url)
         driver.delete_all_cookies()
