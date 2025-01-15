@@ -1,9 +1,11 @@
-from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.common.exceptions import NoSuchElementException
+from time import sleep
+from selenium import webdriver
 
 
 def scraper(cpl, uid):
+    driver = webdriver.Chrome()
     cpl_mapping = {
         "Auchan": {
             "url_base": "https://auchan.hu/.p-{}",
@@ -28,11 +30,11 @@ def scraper(cpl, uid):
 
     url = url_base.format(uid)
 
-    driver = webdriver.Chrome()
-
     try:
+        sleep(2)
         driver.get(url)
-        driver.implicitly_wait(5)
+        driver.delete_all_cookies()
+        driver.implicitly_wait(10)
         price_element = driver.find_element(By.XPATH, xpath)
         price_element = price_element.text
     except NoSuchElementException:
