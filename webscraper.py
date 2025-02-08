@@ -1,7 +1,7 @@
 from selenium.webdriver.common.by import By
 from selenium.common.exceptions import NoSuchElementException
-from time import sleep
 from selenium import webdriver
+from time import sleep
 
 
 def scraper(cpl, uid):
@@ -23,7 +23,7 @@ def scraper(cpl, uid):
         },
         "Tesco": {
             "url_base": "https://bevasarlas.tesco.hu/groceries/hu-HU/products/{}",
-            "xpath": "//span[@data-auto='price-value']",
+            "xpath": "//p[contains(@class, 'eNIEDh')]",
         },
         "Spar": {
             "url_base": "https://www.spar.hu/onlineshop/p/{}",
