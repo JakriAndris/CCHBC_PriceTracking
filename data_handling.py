@@ -80,8 +80,7 @@ def get_price(df):
         except ValueError:
             value = 0
 
-        if value == 0:
-            print(f"Price: {value}")
+        print(f"Price: {value}")
 
         # Update the price in the DataFrame
         df.iat[i, 3] = value
